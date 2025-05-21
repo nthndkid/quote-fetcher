@@ -5,8 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote App</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        };
+    </script>
 </head>
-<body class="bg-white text-gray-800 min-h-screen flex items-center justify-center">
-  <div class="quote-app"></div>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex items-center justify-center">
+  <div class="quote-app px-4 w-full">
+    <nav class="flex justify-center">
+        <div class="px-4 justify-center space-x-4">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="px-4 py-2 shadow-lg hover:bg-gray-300 dark:hover:bg-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded">
+                Toggle Theme
+            </button>
+            
+            <button id="get-quote" class="px-4 py-2 shadow-lg bg-blue-500 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-400">
+                Get Quote
+            </button>
+        </div>
+    </nav>
+
+    <!-- Quote card -->
+    <div class="max-w-xl mx-auto p-6 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100 shadow-lg rounded-xl mt-8">
+        <p id="quote" class="text-xl font-semibold">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum beatae eius fugit rem, nostrum sunt, quidem dolore, doloremque laudantium labore repellat obcaecati. Voluptas nemo cumque perspiciatis labore. Non, itaque voluptatem.</p>
+        <p id="author" class="mt-2 text-gray-500">Lorem Ipsum</p>
+    </div>
+  </div>
+
+<script src="script.js"></script>
 </body>
-</html>
+</html> 
