@@ -28,11 +28,13 @@ if (toggleBtn) {
 const quoteText = document.getElementById("quote");
 const quoteAuthor = document.getElementById("author");
 const getQuoteBtn = document.getElementById("get-quote");
+const spinner = document.getElementById('loading-spinner');
 
 if (getQuoteBtn) {
     getQuoteBtn.addEventListener("click", async() => {
         getQuoteBtn.disabled = true;
         getQuoteBtn.textContent = "Loading...";
+        spinner.classList.remove('hidden');
 
         try {
             const response = await fetch("https://api.quotable.io/random");
@@ -45,6 +47,8 @@ if (getQuoteBtn) {
             console.log(error);
             quoteText.textContent = "Failed to fetch quote, Please try again later!";
             quoteAuthor.textContent = "-----";
+        } finally {
+            spinner.classList.add('hidden');
         }
 
         getQuoteBtn.textContent = "Get Quote";
