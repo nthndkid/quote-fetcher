@@ -30,6 +30,17 @@ const quoteAuthor = document.getElementById("author");
 const getQuoteBtn = document.getElementById("get-quote");
 const spinner = document.getElementById('loading-spinner');
 
+async function fetchQuote() {
+    const response = await fetch("https://api.quotable.io/random");
+    const data = await response.json();
+
+    quoteText.textContent = data.content;
+    quoteAuthor.textContent = `- ${data.author}`;
+}
+
+window.addEventListener('DOMContentLoaded', fetchQuote)
+
+
 if (getQuoteBtn) {
     getQuoteBtn.addEventListener("click", async() => {
         getQuoteBtn.disabled = true;
