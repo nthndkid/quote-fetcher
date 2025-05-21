@@ -1,10 +1,7 @@
-// document.getElementById("quote").textContent = data.content;
-// document.getElementById("author").textContent = `-${data.author}`;
-
 const toggleBtn = document.getElementById('theme-toggle');
 const root = document.documentElement;
 
-// toggle theme
+// toggle theme buttong
 if (toggleBtn) {
     // load theme 
     if (localStorage.getItem('theme') === 'dark'){
@@ -13,6 +10,7 @@ if (toggleBtn) {
     root.classList.remove('dark');
     }
 
+    // change theme
     toggleBtn.addEventListener('click', () => {
         root.classList.toggle('dark');
         
@@ -30,6 +28,7 @@ const quoteAuthor = document.getElementById("author");
 const getQuoteBtn = document.getElementById("get-quote");
 const spinner = document.getElementById('loading-spinner');
 
+// get quote by default
 async function fetchQuote() {
     const response = await fetch("https://api.quotable.io/random");
     const data = await response.json();
@@ -38,20 +37,24 @@ async function fetchQuote() {
     quoteAuthor.textContent = `- ${data.author}`;
 }
 
+// load async func to get quote
 window.addEventListener('DOMContentLoaded', fetchQuote)
 
-
+// process to fetch quote
 if (getQuoteBtn) {
     getQuoteBtn.addEventListener("click", async() => {
         getQuoteBtn.disabled = true;
         getQuoteBtn.textContent = "Loading...";
         spinner.classList.remove('hidden');
 
+
         try {
+            // fetch quote from api
             const response = await fetch("https://api.quotable.io/random");
             const data = await response.json();
             console.log(data);
 
+            // display the fetched quote
             quoteText.textContent = data.content;
             quoteAuthor.textContent = `- ${data.author}`;
         } catch (error) {
@@ -69,6 +72,7 @@ if (getQuoteBtn) {
 
 const copyQuoteBtn = document.getElementById("copy-quote");
 
+// copy quote process
 if (copyQuoteBtn) {
     copyQuoteBtn.addEventListener('click', () => {
         const fullQuote = `${quoteText.textContent} ${quoteAuthor.textContent}`;

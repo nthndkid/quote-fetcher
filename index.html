@@ -3,44 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote App</title>
+    <title>Quotify by nthndkid</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui'],
+                    },
+                },
+            },
         };
     </script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
 </head>
-<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex items-center justify-center">
-  <div class="quote-app px-4 w-full">
-    <nav class="flex justify-center">
-        <div class="px-4 justify-center space-x-4">
-            <!-- Theme Toggle -->
-            <button id="theme-toggle" class="px-4 py-2 shadow-lg hover:bg-gray-300 dark:hover:bg-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded">
-                Toggle Theme
-            </button>
+<body class="font-sans bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col justify-between">
+    <!-- Header -->
+    <header class="sticky top-0 border-b border-gray-300 dark:border-gray-700 bz-50 w-full px-6 py-4 bg-blue-600 dark:bg-blue-600 shadow text-center z-50">
+          <h1 class="text-xl font-semibold gap-2 text-white">
+            <span class="material-symbols-outlined text-white">format_quote</span>
+            Quotify
+        </h1>
+    </header>
+
+    <!-- Main Div -->
+    <main class="quote-app px-4 w-full">
+        <div class="flex justify-center">
+            <div class="px-4 justify-center space-x-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="px-4 py-2 shadow-lg hover:bg-gray-300 dark:hover:bg-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded">
+                    Toggle Theme
+                </button>
+                
+                <button id="get-quote" class="px-4 py-2 shadow-lg bg-blue-500 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-400">
+                    Get Quote
+                </button>
+            </div>
+        </div>
+
+        <!-- Quote card -->
+        <div class="max-w-xl mx-auto p-6 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-100 shadow-lg rounded-xl mt-8">
+            <p id="quote" class="text-xl font-semibold">Loading quote...</p>
             
-            <button id="get-quote" class="px-4 py-2 shadow-lg bg-blue-500 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-400">
-                Get Quote
-            </button>
-        </div>
-    </nav>
+            <div class="flex justify-between mt-2">
+                <p id="author" class="mt-2 text-gray-500"> - Please wait</p>
 
-    <!-- Quote card -->
-    <div class="max-w-xl mx-auto p-6 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100 shadow-lg rounded-xl mt-8">
-        <p id="quote" class="text-xl font-semibold"></p>
-        
-        <div class="flex justify-between mt-2">
-            <p id="author" class="mt-2 text-gray-500"> - </p>
-
-            <button id="copy-quote" class="mt-2">
-                <span class="material-icons text-[1.3rem] text-gray-600 hover:text-blue-500">content_copy</span>
-            </button>
+                <button id="copy-quote" class="mt-2">
+                    <span class="material-icons text-[1.3rem] text-gray-600 hover:text-blue-500">content_copy</span>
+                </button>
+            </div>
         </div>
-    </div>
-  </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="sticky bottom-0 border-t border-gray-300 dark:border-gray-700 w-full px-6 py-4 bg-white dark:bg-gray-900 text-center text-sm text-gray-600 dark:text-gray-400">
+    &copy; 2025 Quote App by <strong class="text-blue-500">
+        <a href="https://github.com/nthndkid" target="_blank" rel="noopener noreferrer" class="hover:underline">nthndkid</a>
+    </strong>
+    </footer>
 
     <!-- Spinner Overlay -->
     <div id="loading-spinner" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
