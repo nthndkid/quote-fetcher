@@ -51,3 +51,20 @@ if (getQuoteBtn) {
         getQuoteBtn.disabled = false;
     });
 }
+
+const copyQuoteBtn = document.getElementById("copy-quote");
+
+if (copyQuoteBtn) {
+    copyQuoteBtn.addEventListener('click', () => {
+        const fullQuote = `${quoteText.textContent} ${quoteAuthor.textContent}`;
+        const copyBtnContent = copyQuoteBtn.innerHTML;
+
+        navigator.clipboard.writeText(fullQuote);
+        copyQuoteBtn.textContent = "Copied to clipboard!";
+
+        setTimeout(() => {
+            copyQuoteBtn.innerHTML = copyBtnContent;
+        }, 2000);
+
+    });
+}
